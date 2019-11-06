@@ -4,10 +4,14 @@ import model.exceptions.DomainException;
 
 public class Account {
 		
+		// Definição dos atributos da classe
+	
 		private Integer number;
 		private String holder;
 		private double balance;
 		private Double withdrawLimit;
+		
+		// Construtor com argumentos
 		
 		public Account(Integer number, String holder, Double initialDeposit, Double withdrawLimit) {
 			this.number = number;
@@ -16,6 +20,8 @@ public class Account {
 			deposit(initialDeposit);
 		}
 
+		// Getters e Setters padrão
+		
 		public Integer getNumber() {
 			return number;
 		}
@@ -28,7 +34,7 @@ public class Account {
 			return holder;
 		}
 
-		public void setHoler(String holder) {
+		public void setHolder(String holder) {
 			this.holder = holder;
 		}
 
@@ -48,6 +54,10 @@ public class Account {
 		{
 			balance += amount;
 		}
+		
+		// Método para saque na conta onde vemos um pouco de programação defensiva
+		// Se o valor a ser sacado for maior que o limite de saque ou valor maior que o saldo na conta
+		// é dada uma mensagem de erro especificando o porque daquele erro
 		
 		public void withdraw(Double amount) throws DomainException
 		{
